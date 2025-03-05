@@ -51,8 +51,6 @@ const results = {
     result12: "・アドバンス研修\n"
 };
 
-document.getElementById("output").innerHTML = results.result1.replace(/\n/g, "<br>");
-
 let currentStep = 0;
 
 function renderQuestion() {
