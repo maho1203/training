@@ -5,7 +5,7 @@ body {
 }
 
 #question-container, #result-container {
-    max-width: 500px;
+    max-width: 800px;
     margin: auto;
     padding: 20px;
     border: 1px solid #ccc;
@@ -20,11 +20,11 @@ button {
     margin: 10px 0;
     border: none;
     border-radius: 5px;
-    background-color: #007BFF;
+    background-color: #dab972;
     color: white;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #dab972;
 }
