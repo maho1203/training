@@ -1,12 +1,11 @@
 body {
-    font-family: "Zen Maru Gothic";
+    font-family: Arial, sans-serif;
     text-align: center;
     padding: 25px;
     font-size: 30px;
 }
 
 #question-container, #result-container {
-    font-family: "Zen Maru Gothic";
     font-size: 20px;
     max-width: 800px;
     margin: auto;
