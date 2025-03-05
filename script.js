@@ -1,22 +1,103 @@
-<div id="step0">
-    <button onclick="nextStep('face')">対面講座を選ぶ</button>
-    <button onclick="nextStep('online')">オンライン講座を選ぶ</button>
-</div>
+const questions = [
+    {
+        text: "何年目のスタッフですか？",
+        options: ["1年目のスタッフ", "2年目以降のスタッフ"],
+        next: [1, 2]
+    },
+    {
+        text: "講座実施形態はどれですか？",
+        options: ["対面講座実施の大学", "オンライン講座実施の大学"],
+        next: [3, 4]
+    },
+    {
+        text: "講座実施形態はどれですか？",
+        options: ["対面講座実施の大学", "オンライン講座実施の大学"],
+        next: [5, 6]
+    },
+    {
+        text: "役職はどれですか？",
+        options: ["講師", "マネージャー", "アシスタント"],
+        next: ["result1", "result2", "result3"]
+    },
+    {
+        text: "役職はどれですか？",
+        options: ["講師", "マネージャー", "アシスタント"],
+        next: ["result4", "result5", "result6"]
+    },
+    {
+        text: "役職はどれですか？",
+        options: ["講師", "マネージャー", "アシスタント"],
+        next: ["result7", "result8", "result9"]
+    },
+    {
+        text: "役職はどれですか？",
+        options: ["講師", "マネージャー", "アシスタント"],
+        next: ["result10", "result11", "result12"]
+    }
+];
 
-<div id="step1" class="hidden">
-    <p>研修タイプを選びました。次に役職を選んでください。</p>
-    <button onclick="nextStep()">次へ</button>
-</div>
+const results = {
+    result1: "あなたが受ける研修は、サポーター研修（対面）・講師トレーニング①（対面）・講師トレーニング②（対面）です。",
+    result2: "あなたが受ける研修は、サポーター研修（対面）・マネージャー研修（対面）です。",
+    result3: "あなたが受ける研修は、サポーター研修（対面）です。",
+    result4: "あなたが受ける研修は、サポーター研修（オンライン）・講師トレーニング①（オンライン）・講師トレーニング②（オンライン）です。",
+    result5: "あなたが受ける研修は、サポーター研修（オンライン）・マネージャー研修（オンライン）です。",
+    result6: "あなたが受ける研修は、サポーター研修（オンライン）です。",
+    result7: "あなたが受ける研修は、アドバンス研修（対面）・講師トレーニング①（対面）・講師トレーニング②（対面）です。",
+    result8: "あなたが受ける研修は、アドバンス研修（対面）・マネージャー研修（対面）です。",
+    result9: "あなたが受ける研修は、アドバンス研修（対面）です。",
+    result10: "あなたが受ける研修は、アドバンス研修・講師トレーニング①（オンライン）・講師トレーニング②（オンライン）です。",
+    result11: "あなたが受ける研修は、アドバンス研修・マネージャー研修（オンライン）です。",
+    result12: "あなたが受ける研修は、アドバンス研修です。"
+};
 
-<div id="step2" class="hidden">
-    <p>役職を選んでください。</p>
-    <button onclick="chooseRole('lecturer')">講師</button>
-    <button onclick="chooseRole('manager')">マネージャー</button>
-    <button onclick="chooseRole('assistant')">アシスタント</button>
-</div>
+let currentStep = 0;
 
-<div id="result" class="hidden">
-    <p>あなたの研修内容：</p>
-    <p id="trainingDetails"></p>
-    <button onclick="reset()">リセット</button>
-</div>
+function renderQuestion() {
+    const questionContainer = document.getElementById("question-container");
+    const resultContainer = document.getElementById("result-container");
+    const questionText = document.getElementById("question-text");
+    const optionsContainer = document.getElementById("options");
+
+    questionContainer.style.display = "block";
+    resultContainer.style.display = "none";
+
+    const question = questions[currentStep];
+    questionText.textContent = question.text;
+    optionsContainer.innerHTML = "";
+
+    question.options.forEach((option, index) => {
+        const button = document.createElement("button");
+        button.textContent = option;
+        button.onclick = () => handleAnswer(question.next[index]);
+        optionsContainer.appendChild(button);
+    });
+}
+
+function handleAnswer(nextStep) {
+    if (typeof nextStep === "string") {
+        showResult(nextStep);
+    } else {
+        currentStep = nextStep;
+        renderQuestion();
+    }
+}
+
+function showResult(resultKey) {
+    const questionContainer = document.getElementById("question-container");
+    const resultContainer = document.getElementById("result-container");
+    const resultText = document.getElementById("result-text");
+
+    questionContainer.style.display = "none";
+    resultContainer.style.display = "block";
+
+    resultText.textContent = results[resultKey];
+}
+
+function restart() {
+    currentStep = 0;
+    renderQuestion();
+}
+
+// 初回の表示
+window.onload = renderQuestion;

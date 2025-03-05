@@ -3,36 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>スタッフ研修遷移</title>
-    <link rel="stylesheet" href="index.css">
+    <title>研修選択</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>スタッフ研修遷移</h1>
-        
-        <div id="step1" class="step">
-            <p>スタッフは何年目ですか？</p>
-            <button onclick="nextStep(2)">1年目</button>
-            <button onclick="nextStep(2)">2年目以降</button>
+    <div id="app">
+        <div id="question-container">
+            <h2 id="question-text"></h2>
+            <div id="options"></div>
         </div>
-        
-        <div id="step2" class="step hidden">
-            <p>ご自身の大学の講座実施形態はどちらですか？</p>
-            <button onclick="nextStep(3, 'face-to-face')">対面講座</button>
-            <button onclick="nextStep(3, 'online')">オンライン講座</button>
+        <div id="result-container" style="display:none;">
+            <h2>研修結果</h2>
+            <p id="result-text"></p>
+            <button onclick="restart()">最初に戻る</button>
         </div>
-        
-        <div id="step3" class="step hidden">
-            <p>どの役職で研修を受けますか？</p>
-            <button onclick="chooseRole('teacher')">講師</button>
-            <button onclick="chooseRole('manager')">マネージャー</button>
-            <button onclick="chooseRole('assistant')">アシスタント</button>
-        </div>
-        
-        <div id="training-content" class="hidden"></div>
-        
-        <button onclick="reset()">最初に戻る</button>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
