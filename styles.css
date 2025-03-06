@@ -13,8 +13,13 @@ body {
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-#result-text, #question-text {
+#question-text {
     font-size: 30px;
+}
+
+#result-text {
+   font-size: 30px;
+   font-weight: bold; 
 }
 
 #memo {
