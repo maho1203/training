@@ -123,14 +123,8 @@ function showResult(resultKey) {
     questionContainer.style.display = "none";
     resultContainer.style.display = "block";
 
-    // 改行ごとに <p> 要素を作成
-    resultText.innerHTML = results[resultKey]
-        .split("\n")
-        .filter(line => line.trim() !== "") // 空行を削除
-        .map(line => `<p>${line}</p>`)
-        .join("");
+    resultText.textContent = results[resultKey];
 }
-
 
 function restart() {
     currentStep = 0;
