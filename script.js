@@ -48,7 +48,7 @@ const questions = [
         // 2年目以降かつ遠隔地
         text: "役職はどれですか？",
         options: ["講師", "マネージャー", "アシスタント", "ディレクター"],
-        next: ["result16", "result17", "result18", "resuslt33"]
+        next: ["result16", "result17", "result18", "result33"]
     }
 ];
 
