@@ -4,6 +4,10 @@ body {
     padding: 25px;
 }
 
+ul {
+    list-style: none;
+  }
+
 #question-container, #result-container {
     max-width: 800px;
     margin: auto;

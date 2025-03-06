@@ -101,9 +101,8 @@
             result33: "アドバンス研修"
         };
 
-        function formatResult(resultKey) {
-            const items = results[resultKey].split("・").filter(e => e.trim());
-            return "<ul style='list-style-type: none; padding: 0;'>" + items.map(e => `<li>${e}</li>`).join("") + "</ul>";
+        function formatResult(result) {
+            return "<ul>" + result.split("・").filter(e => e).map(e => `<li>${e}</li>`).join("") + "</ul>";
         }
 
         let currentStep = 0;
