@@ -30,19 +30,19 @@ const questions = [
         // 2年目以降かつ対面
         text: "役職はどれですか？",
         options: ["講師", "マネージャー", "アシスタント", "ディレクター"],
-        next: ["result7", "result8", "result9", "resuslt33"]
+        next: ["result7", "result8", "result9", "result33"]
     },
     {
         // 2年目以降かつオンライン
         text: "役職はどれですか？",
         options: ["講師", "マネージャー", "アシスタント", "ディレクター"],
-        next: ["result10", "result11", "result12", "resuslt33"]
+        next: ["result10", "result11", "result12", "result33"]
     },
     {
         //1年目かつ遠隔地
         text: "役職はどれですか？",
         options: ["講師", "マネージャー", "アシスタント", "ディレクター"],
-        next: ["result13", "result14", "result15", "resuslt32"]
+        next: ["result13", "result14", "result15", "result32"]
     },
     {
         // 2年目以降かつ遠隔地
