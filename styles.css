@@ -2,7 +2,6 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
     padding: 25px;
-    font-size: 30px;
 }
 
 #question-container, #result-container {
