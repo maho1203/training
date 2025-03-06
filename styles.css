@@ -17,7 +17,11 @@ body {
     font-size: 30px;
 }
 
-.memo {
+#options {
+    font-size: 30px;
+}
+
+#memo {
     font-size: 10px;
 }
 
