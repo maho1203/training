@@ -11,12 +11,15 @@
     <div id="app">
         <div id="question-container">
             <h4 id="question-text"></h4>
+            <img id="question-image" src="" style="display: none; width: 100%; max-width: 300px;">
             <div id="options"></div>
+
         </div>
         <div id="result-container" style="display:none;">
             <p id="memo1">あなたが受ける研修は以下の通りです。</p>
             <p id="result-text"></p>
             <p id="memo2">場合により、例外が発生する場合がございます。<br>予約変更などをお願いする場合は、人事から公式LINEまたは大学グループLINEよりご連絡させていただきます。<br>予めご了承ください。</p>
+            <p id="memo2">以下のリンクから</p>
             <button onclick="restart()">最初に戻る</button>
         </div>
     </div>
@@ -71,33 +74,33 @@
         ];
 
         const results = {
-            result1: "サポーター研修（対面）・講師トレーニング①（対面）・講師トレーニング②（対面）",
-            result2: "サポーター研修（対面）・マネージャー研修（対面）",
-            result3: "サポーター研修（対面）",
+            result1: "サポーター研修(対面)・講師トレーニング①(対面)・講師トレーニング②(対面)",
+            result2: "サポーター研修(対面)・マネージャー研修(対面)",
+            result3: "サポーター研修(対面)",
 
-            result4: "サポーター研修（オンライン）・講師トレーニング①（オンライン）・講師トレーニング②（オンライン）",
-            result5: "サポーター研修（オンライン）・マネージャー研修（オンライン）",
-            result6: "サポーター研修（オンライン）",
+            result4: "サポーター研修(オンライン)・講師トレーニング①(オンライン)・講師トレーニング②(オンライン)",
+            result5: "サポーター研修(オンライン)・マネージャー研修(オンライン)",
+            result6: "サポーター研修(オンライン)",
 
-            result7: "アドバンス研修・講師トレーニング①（対面）・講師トレーニング②（対面）",
-            result8: "アドバンス研修・マネージャー研修（対面）",
+            result7: "アドバンス研修・講師トレーニング①(対面)・講師トレーニング②(対面)",
+            result8: "アドバンス研修・マネージャー研修(対面)",
             result9: "アドバンス研修",
 
-            result10: "アドバンス研修・講師トレーニング①（オンライン）・講師トレーニング②（オンライン）",
-            result11: "アドバンス研修・マネージャー研修（オンライン）",
+            result10: "アドバンス研修・講師トレーニング①(オンライン)・講師トレーニング②(オンライン)",
+            result11: "アドバンス研修・マネージャー研修(オンライン)",
             result12: "アドバンス研修",
 
-            result13: "サポーター研修（遠隔地）・講師トレーニング①（遠隔地）・講師トレーニング②（遠隔地）",
-            result14: "サポーター研修（遠隔地）・マネージャー研修（遠隔地）",
-            result15: "サポーター研修（遠隔地）",
+            result13: "サポーター研修(遠隔地)・講師トレーニング①(遠隔地)・講師トレーニング②(遠隔地)",
+            result14: "サポーター研修(遠隔地)・マネージャー研修(遠隔地)",
+            result15: "サポーター研修(遠隔地)",
 
-            result16: "アドバンス研修・講師トレーニング②（遠隔地）",
-            result17: "アドバンス研修・マネージャー研修（遠隔地）",
+            result16: "アドバンス研修・講師トレーニング②(遠隔地)",
+            result17: "アドバンス研修・マネージャー研修(遠隔地)",
             result18: "アドバンス研修",
 
-            result30: "サポーター研修（対面）・マネージャー研修（対面）・講師トレーニング①（対面）・講師トレーニング②（対面）・アドバンス研修",
-            result31: "サポーター研修（オンライン）・マネージャー研修（オンライン）・講師トレーニング①（オンライン）・講師トレーニング②（オンライン）・アドバンス研修",
-            result32: "サポーター研修（遠隔地）・マネージャー研修（遠隔地）・講師トレーニング①（遠隔地）・講師トレーニング②（遠隔地）・アドバンス研修",
+            result30: "サポーター研修(対面)・マネージャー研修(対面)・講師トレーニング①(対面)・講師トレーニング②(対面)・アドバンス研修",
+            result31: "サポーター研修(オンライン)・マネージャー研修(オンライン)・講師トレーニング①(オンライン)・講師トレーニング②(オンライン)・アドバンス研修",
+            result32: "サポーター研修(遠隔地)・マネージャー研修(遠隔地)・講師トレーニング①(遠隔地)・講師トレーニング②(遠隔地)・アドバンス研修",
             result33: "アドバンス研修"
         };
 
@@ -112,6 +115,7 @@
             const resultContainer = document.getElementById("result-container");
             const questionText = document.getElementById("question-text");
             const optionsContainer = document.getElementById("options");
+            const questionImage = document.getElementById("question-image"); // 追加
 
             questionContainer.style.display = "block";
             resultContainer.style.display = "none";
@@ -120,6 +124,14 @@
             questionText.textContent = question.text;
             optionsContainer.innerHTML = "";
 
+            // 画像の表示を管理
+            if (currentStep === 1 || currentStep === 2) { // 講座実施形態の質問の場合
+                questionImage.src = "kinopio.jpg"; // 画像のパスを指定
+                questionImage.style.display = "block";
+            } else {
+                questionImage.style.display = "none";
+            }
+
             question.options.forEach((option, index) => {
                 const button = document.createElement("button");
                 button.textContent = option;
@@ -127,6 +139,7 @@
                 optionsContainer.appendChild(button);
             });
         }
+
 
         function handleAnswer(nextStep) {
             if (typeof nextStep === "string") {
