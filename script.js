@@ -73,7 +73,7 @@ const results = {
     result14: "・サポーター研修（遠隔地）・マネージャー研修（遠隔地）",
     result15: "・サポーター研修（遠隔地）",
 
-    result16: "・アドバンス研修・・講師トレーニング②（遠隔地）",
+    result16: "・アドバンス研修・講師トレーニング②（遠隔地）",
     result17: "・アドバンス研修・マネージャー研修（遠隔地）",
     result18: "・アドバンス研修",
 
@@ -82,6 +82,13 @@ const results = {
     result32: "サポーター研修（遠隔地）・マネージャー研修（遠隔地）・講師トレーニング①（遠隔地）・講師トレーニング②（遠隔地）・アドバンス研修",
     result33: "アドバンス研修"
 };
+
+function formatResult(result) {
+    return "<ul>" + result.split("・").filter(e => e).map(e => `<li>${e}</li>`).join("") + "</ul>";
+}
+
+document.getElementById("output").innerHTML = formatResult(results.result1);
+
 
 let currentStep = 0;
 
