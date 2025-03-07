@@ -105,7 +105,7 @@
         };
 
         function formatResult(result) {
-            return "<ul>" + result.split("・").filter(e => e).map(e => `<li>${e}</li>`).join("") + "</ul>";
+            return result.split("・").filter(e => e).map(e => `<li>${e}</li>`).join("");
         }
 
         let currentStep = 0;
